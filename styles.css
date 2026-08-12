@@ -139,7 +139,9 @@ body.is-hovering .cursor-hover {
   position: relative;
 }
 
-.nav a::after {
+.nav a::after,
+.hero__cta::after,
+.contact__inst::after {
   content: '';
   position: absolute;
   left: 0;
@@ -153,7 +155,11 @@ body.is-hovering .cursor-hover {
 }
 
 .nav a:hover::after,
-.nav a:focus-visible::after {
+.nav a:focus-visible::after,
+.hero__cta:hover::after,
+.hero__cta:focus-visible::after,
+.contact__inst:hover::after,
+.contact__inst:focus-visible::after {
   transform: scaleX(1);
 }
 
@@ -210,9 +216,9 @@ main {
 }
 
 .hero__cta {
+  position: relative;
   font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 0.1rem;
+  width: fit-content;
 }
 
 .hero__visual {
@@ -362,6 +368,8 @@ main {
 }
 
 .contact__inst {
+  position: relative;
+  width: fit-content;
   font-size: clamp(2.2rem, 6vw, 4rem);
   letter-spacing: 0.08em;
   color: var(--accent);
