@@ -6,29 +6,13 @@
   if (finePointer.matches && cursor && cursorHover) {
     document.body.classList.add('has-cursor');
 
-    let x = window.innerWidth / 2;
-    let y = window.innerHeight / 2;
-    let currentX = x;
-    let currentY = y;
-    let rafId = 0;
-
-    const render = () => {
-      currentX += (x - currentX) * 0.22;
-      currentY += (y - currentY) * 0.22;
-      const transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+    const moveCursor = (event) => {
+      const transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
       cursor.style.transform = transform;
       cursorHover.style.transform = transform;
-      rafId = window.requestAnimationFrame(render);
     };
 
-    window.addEventListener(
-      'pointermove',
-      (event) => {
-        x = event.clientX;
-        y = event.clientY;
-      },
-      { passive: true },
-    );
+    window.addEventListener('pointermove', moveCursor, { passive: true });
 
     const hoverables = document.querySelectorAll('a, button, .work__media, .pair, .gum-grid');
     hoverables.forEach((node) => {
@@ -40,12 +24,9 @@
       });
     });
 
-    rafId = window.requestAnimationFrame(render);
-
     finePointer.addEventListener('change', (event) => {
       if (!event.matches) {
         document.body.classList.remove('has-cursor', 'is-hovering');
-        window.cancelAnimationFrame(rafId);
       }
     });
   }

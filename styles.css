@@ -34,6 +34,19 @@ body {
   overflow-x: hidden;
 }
 
+a,
+button,
+[role='button'],
+input,
+textarea,
+select,
+label,
+.work__media,
+.pair,
+.gum-grid {
+  cursor: none;
+}
+
 body::before {
   content: '';
   position: fixed;
@@ -74,7 +87,7 @@ a {
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
-  transition: opacity 0.2s ease, transform 0.15s ease;
+  transition: opacity 0.15s ease;
   will-change: transform;
 }
 
@@ -399,8 +412,24 @@ main {
 }
 
 @media (max-width: 860px) {
-  body {
+  body,
+  a,
+  button,
+  [role='button'],
+  input,
+  textarea,
+  select,
+  label,
+  .work__media,
+  .pair,
+  .gum-grid {
     cursor: auto;
+  }
+
+  a,
+  button,
+  [role='button'] {
+    cursor: pointer;
   }
 
   .cursor,
